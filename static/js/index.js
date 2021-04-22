@@ -53,6 +53,7 @@
 	Ident=(message.payloadString).split(" ")[0];
 	datos=(message.payloadString).split(" ")[1];
 	fecha=(message.payloadString);
+	console.log(fecha)
 	if (Ident== "S1"){
 		document.getElementById("sensor1").innerHTML=datos;
 		}
