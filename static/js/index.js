@@ -49,11 +49,12 @@
 
   // called when a message arrives
   function onMessageArrived(message) {
-	console.log(message.payloadString);
+	mensaje=(message.payloadString);
+	console.log(mensaje)
 	Ident=(message.payloadString).split(" ")[0];
 	datos=(message.payloadString).split(" ")[1];
 	fecha=(message.payloadString);
-	console.log(fecha)
+
 	if (Ident== "S1"){
 		document.getElementById("sensor1").innerHTML=datos;
 		}
