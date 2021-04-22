@@ -10,6 +10,11 @@ GPIO.setup (18, GPIO.OUT)
 GPIO.setup (17, GPIO.OUT)
 f=open("sensor.txt","w")
 
+def listToString(s): 
+	str1 = "" 
+	for ele in s: 
+		str1 += ele   
+	return str1 
 
 def on_message(client, obj, msg):    
 	mensaje=(msg.payload.decode("utf-8"))
@@ -22,8 +27,8 @@ def on_message(client, obj, msg):
 		#	mqttc.publish("wlady_hp66@hotmail.com/tema1", line)
 		#	print(line)
 		#f.close()
-		#lineash1 = []
-		#lineash2 = []
+		lineash1 = []
+		lineash2 = []
 		lines = f.readlines()
 		for line in lines:
 			palabras = line.split(' ')
@@ -32,11 +37,10 @@ def on_message(client, obj, msg):
 					 lineash1.append(line)
 				elif p=="H2":
 					lineash2.append(line)
-		f.close
 		print(lineash1)
 		print(lineash2)
-		mqttc.publish("wlady_hp66@hotmail.com/tema1", lineash1)
-		mqttc.publish("wlady_hp66@hotmail.com/tema1", lineash2)
+		mqttc.publish("wlady_hp66@hotmail.com/tema1", listToString(lineash1))
+		mqttc.publish("wlady_hp66@hotmail.com/tema1", listToString(lineash2))
 
 
 
@@ -59,7 +63,6 @@ while rc == 0:
 		GPIO.output(18, True)
 		men=("Sensor1 Activado")
 		mqttc.publish("wlady_hp66@hotmail.com/tema1", "S1 activo")
-		print(men)
 		f=open("sensor.txt","a")
 		f.write("H1 "+Fechahora  +men +"\n")
 		f.close()
@@ -71,7 +74,6 @@ while rc == 0:
 		GPIO.output(17, True)
 		men=("Sensor2 Activado")
 		mqttc.publish("wlady_hp66@hotmail.com/tema1", "S2 activo")
-		print(men)
 		f=open("sensor.txt","a")
 		f.write("H2 "+Fechahora  +men +"\n")
 		f.close()
