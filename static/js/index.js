@@ -60,10 +60,10 @@
 	if (Ident== "S2"){
 		document.getElementById("sensor2").innerHTML=datos;
 		}
-	if (Ident== "H1"){
+	if (Ident== "[H1'"){
 		document.getElementById("historial1").innerHTML=fecha;
 	}
-	if (Ident== "H2"){
+	if (Ident== "[H2'"){
 		document.getElementById("historial2").innerHTML=fecha;
 		}
   }
